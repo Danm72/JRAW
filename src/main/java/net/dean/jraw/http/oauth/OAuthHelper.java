@@ -132,6 +132,8 @@ public class OAuthHelper {
 
         HttpRequest request = HttpRequest.from("irrelevant", JrawUtils.newUrl(finalUrl));
         Map<String, String> query = JrawUtils.parseUrlEncoded(request.getUrl().getQuery());
+        if(query == null)
+            throw new NullPointerException();
         if (!query.containsKey("state"))
             throw new IllegalArgumentException("Final redirect URI did not contain the 'state' query parameter");
         if (!query.get("state").equals(state))

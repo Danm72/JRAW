@@ -230,6 +230,10 @@ public final class JrawUtils {
      * and the key-value separator is assumed to be '='
      */
     public static Map<String, String> parseUrlEncoded(String data) {
+        if(data == null) {
+          return null;
+        }
+
         Map<String, String> map = new HashMap<>();
 
         String[] keysAndValues = data.split("&");
